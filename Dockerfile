@@ -1,7 +1,6 @@
-FROM alpine:3.5
+FROM alpine:3.6
 
-ENV USERNAME admin
-ENV FOSSIL_VERSION 2.1
+ENV FOSSIL_VERSION 2.4
 
 COPY runserver.sh /usr/local/bin/runserver.sh
 
@@ -17,11 +16,16 @@ RUN addgroup -Sg 400 fossil \
   && apk del --purge --no-cache curl \
   && rm -f /var/cache/apk/*
 
+ENV USERNAME admin
+ENV HTTPS ""
+ENV ARGS ""
+ENV INIT ""
+
 VOLUME ["/data"]
 
 WORKDIR "/data"
 
-EXPOSE 9000
+EXPOSE 8080
 
 USER fossil
 

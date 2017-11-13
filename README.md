@@ -2,7 +2,8 @@
 
 Run a basic Fossil server out of a volume
 
-Files are served out of /data
+Files are served out of `data`. `fossil.fossil` is served if present, otherwise 
+the directory is served with `--repolist`.
 
 Configuration environment variables:
 

@@ -1,19 +1,20 @@
 #!/bin/sh
 
-if [ $INIT = "true" ]
+if [ ! -z $INIT ]
 then
   /usr/local/bin/fossil init -A $USERNAME /data/fossil.fossil
 fi
 
-if [ ! -z $PASSWORD ] && [ -w /data/fossil.fossil ]
+if [ ! -z $PASSWORD ]
 then
   /usr/local/bin/fossil user password  $USERNAME $PASSWORD -R /data/fossil.fossil
 fi
 
 unset $USERNAME
 unset $PASSWORD
+set ARGS = ""
 
-if [ $HTTPS = "true" ]
+if [ ! -z $HTTPS ]
 then
   set ARGS = "--https"
 fi

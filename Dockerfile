@@ -1,5 +1,6 @@
 FROM alpine:3.6
 
+ENV USERNAME admin
 ENV FOSSIL_VERSION 2.4
 
 COPY runserver.sh /usr/local/bin/runserver.sh
@@ -15,11 +16,6 @@ RUN addgroup -Sg 400 fossil \
   && chmod +x /usr/local/bin/runserver.sh \
   && apk del --purge --no-cache curl \
   && rm -f /var/cache/apk/*
-
-ENV USERNAME admin
-ENV HTTPS ""
-ENV ARGS ""
-ENV INIT ""
 
 VOLUME ["/data"]
 
